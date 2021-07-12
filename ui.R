@@ -44,6 +44,10 @@ ui <- material_page(
                             font-weight: 300;
                          }
                         
+                        .modal-content {
+                            background-color:#704899 !important;
+                        }
+                        
                          .datepicker-table{
                             background-color: whitesmoke;
                          } 
@@ -182,19 +186,21 @@ ui <- material_page(
                     
                     material_row(
                         
-                        material_column(width = 4,
+                        material_column(width = 1,{}),
+                        
+                        material_column(width = 5,
                                         material_button(input_id = "anomaly_search", label = "Monitor anomalies", color = "INDIGO", depth = 5)
                                         
                         ),
+                       
+                        material_column(width = 1,{}),
+                        
                         material_column(width = 4,
-                                        material_button(input_id = "download_report", label = "Download report", color = "INDIGO",depth = 5)
+                                        material_button(input_id = "start_over", label = "Start over", color = "INDIGO",depth = 5)
                                         
                         ),
                         
-                        material_column(width = 4,
-                                        material_button(input_id = "start_over", label = "Start over again", color = "INDIGO",depth = 5)
-                                        
-                        )
+                        material_column(width = 1,{})
                         
                     )
                     
@@ -214,13 +220,15 @@ ui <- material_page(
                                                   button_depth = 5,
                                                   button_color = "purple accent-3",
                                                   button_text = "How does it work?",
-                                                  button_icon = "open_in_browser",
-                                                  title = "510(k) Timeline Predictor App",
-                                                  tags$p("This application is built on a unique principle that
-                                                                integrates Python and R computing languages into an R shiny 
-                                                                web app framework. "),
-                                                  HTML('<center><img src="analytics.jpg", width = "700px", height = "400px"></center>')
-                                                  #tags$img(src = "principle.jpg", width = "500px", height = "400px")
+                                                  button_icon = "help",
+                                                  title = "",
+                                                  tags$li("Upload your series as a single column .csv flat file."),
+                                                  tags$li("Choose the frequency of your series."),
+                                                  tags$li("Choose the starting date of your series."),
+                                                  tags$li("Click: 'MONITOR ANOMALIES'"),
+                                                  tags$li("Z-score: calculates z-score from STL decomposition remainder of your series."),
+                                                  tags$li("Normalized anomaly score: uses a customized algorithm to calculate an anomaly score relative to the variability in the STL remainder."),
+                                                  
                                               )
                                               
                               ),
